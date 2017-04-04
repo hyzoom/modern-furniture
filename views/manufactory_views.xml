@@ -1,0 +1,82 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="modern_furn.list">
+      <field name="name">modern_furn list</field>
+      <field name="model">modern_furn.modern_furn</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="workshop_action_window">
+      <field name="name">Workshop</field>
+      <field name="res_model">furn.manufactory</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+      <record model="ir.actions.act_window" id="warehouse_action_window">
+      <field name="name">Warehouse</field>
+      <field name="res_model">furn.manufactory</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+     <record model="ir.actions.act_window" id="materials_action_window">
+      <field name="name">Materials</field>
+      <field name="res_model">furn.materials</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="products_action_window">
+      <field name="name">Products</field>
+      <field name="res_model">furn.products</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="modern_furn.action_server">
+      <field name="name">modern_furn server</field>
+      <field name="model_id" ref="model_modern_furn_modern_furn"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Modern Furniture" id="menu_root"/>
+    <menuitem name="Manufactory" id="manufactory_menu" parent="menu_root" />
+    <menuitem name="Workshop" id="workshop_menu" parent="manufactory_menu"  action="workshop_action_window"/>
+    <menuitem name="Warehouse" id="warehouse_menu" parent="manufactory_menu"  action="warehouse_action_window"/>
+    <menuitem name="Raw Materials" id="materials_menu" parent="warehouse_menu"  action="materials_action_window"/>
+    <menuitem name="Products" id="products_menu" parent="manufactory_menu"  action="products_action_window"/>
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="modern_furn.menu_1" parent="modern_furn.menu_root"/>
+    <menuitem name="Menu 2" id="modern_furn.menu_2" parent="modern_furn.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="modern_furn.menu_1_list" parent="modern_furn.menu_1"
+              action="modern_furn.action_window"/>
+    <menuitem name="Server to list" id="modern_furn" parent="modern_furn.menu_2"
+              action="modern_furn.action_server"/>
+    -->
+  </data>
+</odoo>

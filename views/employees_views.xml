@@ -1,0 +1,113 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="mangers_tree">
+            <field name="name">Managers List</field>
+            <field name="model">furn.mangers</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="address"/>
+                    <field name="nmb_experience"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="mangers_form">
+            <field name="name">Managers Form</field>
+            <field name="model">furn.mangers</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="2">
+                            <group>
+                                <field name="name"/>
+                                <field name="phon_no"/>
+                                <field name="nmb_experience"/>
+                            </group>
+                            <group>
+                                <field name="address"/>
+                                <field name="gender"/>
+                                <field name="age"/>
+                            </group>
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="managers_action_window">
+            <field name="name">Managers</field>
+            <field name="res_model">furn.mangers</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="designers_action_window">
+            <field name="name">Designers</field>
+            <field name="res_model">furn.designers</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="photographers_action_window">
+            <field name="name">Photographers</field>
+            <field name="res_model">furn.employees</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="accountant_action_window">
+            <field name="name">Accountant</field>
+            <field name="res_model">furn.employees</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="workers_action_window">
+            <field name="name">Manual Workers</field>
+            <field name="res_model">furn.employees</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- server action to the one above -->
+        <!--
+        <record model="ir.actions.server" id="modern_furn.action_server">
+          <field name="name">modern_furn server</field>
+          <field name="model_id" ref="model_modern_furn_modern_furn"/>
+          <field name="code">
+            action = {
+              "type": "ir.actions.act_window",
+              "view_mode": "tree,form",
+              "res_model": self._name,
+            }
+          </field>
+        </record>
+        -->
+
+        <!-- Top menu item -->
+
+        <menuitem name="Modern Furniture" id="menu_root"/>
+        <menuitem name="Employees" id="employees_menu" parent="menu_root"/>
+        <menuitem name="Managers" id="manager_menu" parent="employees_menu" action="managers_action_window"/>
+        <menuitem name="Designers" id="designer_menu" parent="employees_menu" action="designers_action_window"/>
+        <menuitem name="Photographers" id="photographers_menu" parent="employees_menu"
+                  action="photographers_action_window"/>
+        <menuitem name="Accountant" id="accountant_menu" parent="employees_menu" action="accountant_action_window"/>
+        <menuitem name="Manual Workers" id="workers_menu" parent="employees_menu" action="workers_action_window"/>
+
+        <!-- menu categories -->
+        <!--
+        <menuitem name="Menu 1" id="modern_furn.menu_1" parent="modern_furn.menu_root"/>
+        <menuitem name="Menu 2" id="modern_furn.menu_2" parent="modern_furn.menu_root"/>
+        -->
+        <!-- actions -->
+        <!--
+        <menuitem name="List" id="modern_furn.menu_1_list" parent="modern_furn.menu_1"
+                  action="modern_furn.action_window"/>
+        <menuitem name="Server to list" id="modern_furn" parent="modern_furn.menu_2"
+                  action="modern_furn.action_server"/>
+        -->
+    </data>
+</odoo>
